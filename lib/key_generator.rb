@@ -13,6 +13,5 @@ class KeyGenerator
       key << rand(0..100)
     end  
     key
-    binding.pry
   end
 end
