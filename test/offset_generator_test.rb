@@ -15,7 +15,9 @@ class OffsetGeneratorTest < Minitest::Test
     result = offset.offset_generator
 
     assert_equal 6, result
-  end  
+  end 
+  # 2 offset are not equal 
+  #   
 
 
 end
