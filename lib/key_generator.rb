@@ -10,8 +10,8 @@ class KeyGenerator
   def random_key_maker
     key = []
     5.times do 
-      key << rand(0..100)
+      key << rand(0..9)
     end  
-    key
+    key.join
   end
 end
