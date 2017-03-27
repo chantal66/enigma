@@ -1,10 +1,7 @@
 require 'date'
 require 'pry'
 class OffsetGenerator
-  
-  def initialize
-    @key = []
-  end
+  attr_reader :key
 
   def date
     Date.today.strftime('%d%m%y')
@@ -15,13 +12,23 @@ class OffsetGenerator
   end
 
   def offset_generator
+    result = []
     num = date_to_integer ** 2
     last_four = num.to_s[-4..-1]
-    last_four.each_char do |character|
-      @key << character.to_i
-      #binding.pry
-    end  
+    last_four.each_char do |character| 
+      result << character.to_i
+    end
+    result
+  end  
+
+  def combining_offsets_and_keys
+    result = a.map.with_index do |num, idx|
+      num + b[idx]  
+    end
   end
+  
+
 end
 
-OffsetGenerator.new.offset_generator
+
+p OffsetGenerator.new.offset_generator
