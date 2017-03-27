@@ -44,7 +44,7 @@ class CipherTest < Minitest::Test
 
   def test_returns_a_hash
     result = Cipher.new(20)
-
+    binding.pry
     assert result.cipher.is_a?Hash
   end
  

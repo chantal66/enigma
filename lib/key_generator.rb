@@ -1,5 +1,5 @@
-require 'pry'
-class KeyGenerator
+
+class Key
   
   attr_accessor :key
 
@@ -7,7 +7,7 @@ class KeyGenerator
     @key = key
   end
 
-  def random_key_maker
+  def key_maker
     key = []
     5.times do 
       key << rand(0..9)
