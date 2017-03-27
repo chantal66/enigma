@@ -30,15 +30,4 @@ class OffsetGeneratorTest < Minitest::Test
     assert_equal 4, result.length
 
   end
-
-  def test_if_key_is_ready_for_calculator
-    offset = OffsetGenerator.new
-    result = offset.date
-    result_1 = offset.date_to_integer
-    result_2 = offset.offset_generator
-    result_3 = offset.key_a
-
-    assert_equal 
-   binding.pry
-  end
 end
