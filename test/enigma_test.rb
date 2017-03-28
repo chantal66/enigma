@@ -10,9 +10,9 @@ require 'pry'
 class EnigmaTest < Minitest::Test
   def test_it_can_encrypt
     e = Enigma.new
-    message = e.encrypt("hello", "12345", date=Date.today)
+    message = e.encrypt("hello", [3,5,1,2] )
     binding.pry
-    assert_equal "@%DP(", message
+    assert_equal "kjmnr", message
   end
 end
 

@@ -25,4 +25,11 @@ class KeyGeneratorTest < Minitest::Test
     
     refute false , result
   end
+
+  def test_it_defaults_to_array_of_numbers
+    key = KeyGenerator.new
+    result = key.key_maker
+
+    assert result.is_a? String
+  end
 end
