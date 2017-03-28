@@ -15,30 +15,23 @@ class Enigma
     ('a'..'z').to_a + ('0'..'9').to_a + [' ', '.', ',']
   end
 
-  def encrypt(message, key = nil, date=Date.new, letters = mapping_chars)
+  def encrypt(message, rotations)
     characters = message.chars
-    @the_key = key || @key.key_generator
-    @offset = OffsetGenerator.new(@the_key, date)
-    @encrypted_message = []
+    encrypted_message = ''
+      characters.each_slice(4) do |letter|0 
+        
+      letters.each_with_index do |letter, index|
 
-    characters.each_with_index do |char, index|
-      if index % 4 == 0
-        offset = @offset.first_offset
-      elsif index % 4 == 1
-        offset = @offset.second_offset
-      elsif index % 4 == 2
-        offset = @offset.third_offset
-      elsif index % 4 == 3
-        offset = @offset.fourth_offset
-      end
-
-      if chars.include?(char)
-        @rotated_character = letters.rotate(letters.index(char) + offset).first
-        @encrypted_message << @rotated_character
-      else
-        @encrypted_message << char
-      end
-    end
-    return @encrypted_message.join
+        if characters.include?(letter)
+          rotated_character = characters.rotate(characters.index(letter) + offset).first
+          encrypted_message << rotated_character
+        else
+          encrypted_message << char  # when the extension comes just take it out
+        end
+      end 
+    return encrypted_message
   end
 end
+
+
+

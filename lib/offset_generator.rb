@@ -20,15 +20,4 @@ class OffsetGenerator
     end
     result
   end  
-
-  def combining_offsets_and_keys
-    result = a.map.with_index do |num, idx|
-      num + b[idx]  
-    end
-  end
-  
-
 end
-
-
-p OffsetGenerator.new.offset_generator
