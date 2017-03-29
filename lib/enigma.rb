@@ -1,37 +1,72 @@
 
 require './lib/key_generator'
 require './lib/offset_generator'
+require './lib/rotator'
 require 'date'
 require 'pry'
 
 class Enigma
-  attr_accessor :key, :offset
+  attr_accessor :key, :offset, :rotations, :message
 
   def initialize
-    @key = Key.new
+    @key = KeyGenerator.new
   end
 
   def mapping_chars
     ('a'..'z').to_a + ('0'..'9').to_a + [' ', '.', ',']
   end
+  
+  def cipher(rotation)
+    characters = ("a".."z").to_a + ("0".."9").to_a + [" ", ".", ","]
+    rotated_characters = characters.rotate(rotation)
+    Hash[characters.zip(rotated_characters)]
+  end
 
-  def encrypt(message, rotations)
-    characters = message.chars
-    encrypted_message = ''
-      characters.each_slice(4) do |letter|0 
-        
-      letters.each_with_index do |letter, index|
+  def encrypt_letter(letter, rotation)
+      cipher_for_rotation = cipher(rotation)
+      cipher_for_rotation[letter]
+  end
 
-        if characters.include?(letter)
-          rotated_character = characters.rotate(characters.index(letter) + offset).first
-          encrypted_message << rotated_character
-        else
-          encrypted_message << char  # when the extension comes just take it out
-        end
-      end 
-    return encrypted_message
+  def encrypt(string, rotation)
+    letters = string.split("")
+     results = []
+     letters.collect do |letter|
+       results << encrypt_letter(letter, rotation)
+     end  
+     results.join
+  end
+
+  def encrypt_w_rotations(string, rotations = Rotator.new.offset_calculator)
+    letters = string.split("")
+    results = []
+    letters.each_slice(4) do |slice|    
+      slice.each_with_index do |letter, index|
+        message_index = mapping_chars.index(letter)
+        rotator = rotations[index]
+        results << mapping_chars.rotate(rotator)[message_index]
+      end
+    end  
+    results.join
+  end
+
+  def decrypt(string, rotations = Rotator.new.offset_calculator)
+    letters = string.split("")
+    results = []
+    letters.each_slice(4) do |slice|    
+      slice.each_with_index do |letter, index|
+        message_index = mapping_chars.index(letter)
+        rotator = rotations[index] - (rotations[index] * 2)
+        results << mapping_chars.rotate(rotator)[message_index]
+      end
+    end  
+    results.join
   end
 end
+
+
+
+
+
 
 
 

@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper'
 require './lib/key_generator'
 require 'pry'
 
@@ -14,7 +13,7 @@ class KeyGeneratorTest < Minitest::Test
     key = KeyGenerator.new
     result = key.key_maker.length
     
-    assert_equal 5 , result
+    assert_equal 5, result
   end
 
   def test_keys_are_not_the_same
@@ -23,10 +22,10 @@ class KeyGeneratorTest < Minitest::Test
     key_2 = key.key_maker
     result = (key_1 == key_2)
     
-    refute false , result
+    refute false, result
   end
 
-  def test_it_defaults_to_array_of_numbers
+  def test_it_defaults_to_string_of_numbers
     key = KeyGenerator.new
     result = key.key_maker
 
