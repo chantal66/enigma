@@ -48,7 +48,6 @@
         1,
         null,
         1,
-        1,
         null,
         1,
         7,
@@ -125,7 +124,7 @@
         null
       ]
     },
-    "timestamp": 1490836112
+    "timestamp": 1490884631
   },
   "MiniTest": {
     "coverage": {
@@ -328,7 +327,9 @@
         1,
         1,
         1,
+        null,
         1,
+        null,
         null,
         1,
         1,
@@ -370,11 +371,12 @@
         1,
         null,
         1,
+        null,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1490836101
+    "timestamp": 1490884452
   }
 }

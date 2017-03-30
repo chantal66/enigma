@@ -6,7 +6,6 @@ require 'date'
 require 'pry'
 
 class Enigma
-  attr_accessor :key, :offset, :rotations, :message
 
   def initialize
     @key = KeyGenerator.new
