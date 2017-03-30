@@ -2,7 +2,9 @@ require './test/test_helper'
 require './lib/key_generator'
 require './lib/offset_generator'
 require './lib/rotator'
+
 require 'pry'
+
 
 class RotatorTest < Minitest::Test
   def test_does_rotator_exist
@@ -47,3 +49,4 @@ class RotatorTest < Minitest::Test
   end
 
 end      
+
