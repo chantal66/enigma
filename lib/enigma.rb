@@ -16,26 +16,6 @@ class Enigma
     ('a'..'z').to_a + ('0'..'9').to_a + [' ', '.', ',']
   end
   
-  def cipher(rotation)
-    characters = ("a".."z").to_a + ("0".."9").to_a + [" ", ".", ","]
-    rotated_characters = characters.rotate(rotation)
-    Hash[characters.zip(rotated_characters)]
-  end
-
-  def encrypt_letter(letter, rotation)
-      cipher_for_rotation = cipher(rotation)
-      cipher_for_rotation[letter]
-  end
-
-  def encrypt(string, rotation)
-    letters = string.split("")
-     results = []
-     letters.collect do |letter|
-       results << encrypt_letter(letter, rotation)
-     end  
-     results.join
-  end
-
   def encrypt_w_rotations(string, rotations = Rotator.new.offset_calculator)
     letters = string.split("")
     results = []

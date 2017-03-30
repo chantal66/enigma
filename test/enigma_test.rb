@@ -6,13 +6,6 @@ require 'date'
 require 'pry'
 
 class EnigmaTest < Minitest::Test
-  def test_it_can_encrypt_a_letter
-    e = Enigma.new
-    result = e.encrypt("h", 20)
-   
-    assert_equal "1", result
-  end
-
    def test_it_can_encrypt_a_word_w_random_key
     e = Enigma.new
     result = e.encrypt_w_rotations("hello", 12345)
